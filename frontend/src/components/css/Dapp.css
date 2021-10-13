@@ -2,21 +2,15 @@
   text-align: center;
 }
 
-.Dapp-logo {
-  height: 40vmin;
+.art {
+  height: 150px;
+  width: 150px;
+  display: inline-block;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 
-.Dapp-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.Dapp-link {
-  color: #09d3ac;
+img {
+    max-width: 100%;
+    max-height: 100%;
 }
