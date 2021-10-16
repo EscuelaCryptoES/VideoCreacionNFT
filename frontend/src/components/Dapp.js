@@ -2,10 +2,9 @@ import React, {Component} from "react";
 
 import { ethers } from "ethers";
 
-import SimpleStorageArtifact from "../contracts/SimpleStorage.json";
-import contractAddreSS from "../contracts/contract-address-simplestorage.json";
+import EscuelaCryptoESArtifact from "../contracts/EscuelaCryptoES.json";
+import EscuelaCryptoESContract from "../contracts/contract-address-escuelaCryptoES.json";
 
-import { Loading } from "./Loading";
 import { Gallery } from "./Gallery";
 
 import "./css/Dapp.css"
@@ -32,11 +31,9 @@ export class Dapp extends Component {
 
   render() {
 
-    // If Blockchain connection doesn't works
-    if (this.state.art.length === 0) {
-      return <Loading />;
-    }
-
+    // if(this.state.art.length === 0){
+    //   return(<div>No hay SC desplegado</div>)
+    // }
     // If everything is loaded, we render the application.
     return (
       <div className="container p-4">
@@ -67,23 +64,24 @@ export class Dapp extends Component {
 
   async _intializeEthers() {
 
-    this._provider = new ethers.providers.Web3Provider(window.ethereum);
-
-    this._simpleStorage = new ethers.Contract(
-      contractAddreSS.SimpleStorage,
-      SimpleStorageArtifact.abi,
-      this._provider
-    );
     
-    // Retrieve NFT info
-    //const storedData = await this._simpleStorage.getArt(); 
-    this.setState({ 
-      art: [
-        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
-        21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,
-        38,39,40,41,42,43,44,45,46,47,48,49,50
-      ]
-    }) 
+      this._provider = new ethers.providers.Web3Provider(window.ethereum);
+
+      this._escuelaCryptoES = new ethers.Contract(
+        EscuelaCryptoESContract.EscuelaCryptoES,
+        EscuelaCryptoESArtifact.abi,
+        this._provider
+      );
+      
+      // Retrieve NFT info
+      const storedData = await this._escuelaCryptoES.tokenURI(2);
+      console.log(storedData)
+      this.setState({
+        art: [
+          storedData
+        ]
+      })
+           
     // storedData.toString() });
   }
 
@@ -96,7 +94,7 @@ export class Dapp extends Component {
 
   //     // We send the transaction, and save its hash in the Dapp's state. This
   //     // way we can indicate that we are waiting for it to be mined.
-  //     const tx = await this._simpleStorage.set(data);
+  //     const tx = await this._escuelaCryptoES.set(data);
   //     this.setState({ txBeingSent: tx.hash });
 
   //     // We use .wait() to wait for the transaction to be mined. This method

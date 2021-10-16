@@ -42,6 +42,6 @@ contract EscuelaCryptoES is ERC721, ERC721URIStorage, Ownable {
     }
 
     function buildURI() public view returns(string memory){
-        return string(abi.encodePacked(_baseURI(), _tokenIdCounter.current(), ".json"));
+        return string(abi.encodePacked(_tokenIdCounter.current(),".json"));
     }
 }

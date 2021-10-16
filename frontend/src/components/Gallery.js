@@ -9,10 +9,11 @@ export function Gallery({ transferData }) {
           return(
             <div key={key} className="col-md-2">  
               <div className="art">
-                <img
+                {art}
+                {/* <img
                 src = {`./images/${art}.jpg`}
                 alt = {art}
-                />
+                /> */}
               </div>
             </div>
           )
