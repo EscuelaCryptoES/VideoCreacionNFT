@@ -6,5 +6,11 @@ module.exports = {
       chainId: 1337
     },
   },
-  solidity: "0.7.3"
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.3"
+      }
+    ]
+  }
 };
