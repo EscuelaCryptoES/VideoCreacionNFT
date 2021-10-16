@@ -19,7 +19,7 @@ contract EscuelaCryptoES is ERC721, ERC721URIStorage, Ownable {
     }
 
     function _baseURI() internal pure override returns (string memory) {
-        return "localhost:5000/";
+        return "./images/";
     }
 
     function safeMint(address to) public onlyOwner {
