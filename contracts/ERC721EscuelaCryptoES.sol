@@ -13,7 +13,7 @@ contract EscuelaCryptoES is ERC721, ERC721URIStorage, Ownable {
     Counters.Counter private _tokenIdCounter;
 
     constructor() ERC721("EscuelaCryptoES", "ECE") {
-        for(uint i = 0; i < 20; i++){
+        for(uint i = 0; i < 6; i++){
             safeMint(msg.sender);
         }
     }
