@@ -17,17 +17,17 @@ async function main() {
     await deployer.getAddress()
   );
 
-  const SimpleStorage = await ethers.getContractFactory("SimpleStorage");
-  const simpleStorage = await SimpleStorage.deploy();
-  await simpleStorage.deployed();
+  const EscuelaCryptoES = await ethers.getContractFactory("EscuelaCryptoES");
+  const escuelaCryptoES = await EscuelaCryptoES.deploy();
+  await escuelaCryptoES.deployed();
 
-  console.log("SimpleStorage address:", simpleStorage.address);
+  console.log("Token ERC721 address:", escuelaCryptoES.address);
 
   // We also save the contract's artifacts and address in the frontend directory
-  saveFrontendFiles(simpleStorage);
+  saveFrontendFiles(escuelaCryptoES);
 }
 
-function saveFrontendFiles(simpleStorage) {
+function saveFrontendFiles(escuelaCryptoES) {
   const fs = require("fs");
   const contractsDir = __dirname + "/../frontend/src/contracts";
 
@@ -36,15 +36,15 @@ function saveFrontendFiles(simpleStorage) {
   }
 
   fs.writeFileSync(
-    contractsDir + "/contract-address-simplestorage.json",
-    JSON.stringify({ SimpleStorage: simpleStorage.address }, undefined, 2)
+    contractsDir + "/contract-address-escuelaCryptoES.json",
+    JSON.stringify({ EscuelaCryptoES: escuelaCryptoES.address }, undefined, 2)
   );
 
-  const SimpleStorageArtifact = artifacts.readArtifactSync("SimpleStorage");
+  const EscuelaCryptoESArtifact = artifacts.readArtifactSync("EscuelaCryptoES");
 
   fs.writeFileSync(
-    contractsDir + "/SimpleStorage.json",
-    JSON.stringify(SimpleStorageArtifact, null, 2)
+    contractsDir + "/EscuelaCryptoES.json",
+    JSON.stringify(EscuelaCryptoESArtifact, null, 2)
   );
 }
 
