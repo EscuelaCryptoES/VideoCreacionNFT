@@ -8,9 +8,8 @@ The first things you need to do are cloning this repository and installing its
 dependencies:
 
 ```sh
-git clone https://github.com/EscuelaCryptoES/hard-react-app.git
-cd hard-react-app
-git checkout -b ethers
+git clone https://github.com/EscuelaCryptoES/VideoCreacionNFT.git
+cd VideoCreacionNFT
 npm install
 ```
 
