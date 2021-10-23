@@ -1,5 +1,5 @@
 {
-  "name": "hardhat-react-app-ethers",
+  "name": "VideoCreacionNFT",
   "version": "1.0.0",
   "description": "A boilerplate repository to get you started with Hardhat and Ethereum development",
   "directories": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EscuelaCryptoES/hard-react-app/tree/ethers"
+    "url": "git+https://github.com/EscuelaCryptoES/VideoCreacionNFT/tree/start"
   },
   "keywords": [
     "hardhat",
@@ -20,9 +20,9 @@
   "author": "Nomic Labs",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/EscuelaCryptoES/hard-react-app/issues"
+    "url": "https://github.com/EscuelaCryptoES/VideoCreacionNFT/issues"
   },
-  "homepage": "https://github.com/EscuelaCryptoES/hard-react-app/tree/ethers#readme",
+  "homepage": "https://github.com/EscuelaCryptoES/VideoCreacionNFT/tree/start#readme",
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.0",
     "@nomiclabs/hardhat-waffle": "^2.0.0",

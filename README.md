@@ -10,6 +10,8 @@ dependencies:
 ```sh
 git clone https://github.com/EscuelaCryptoES/VideoCreacionNFT.git
 cd VideoCreacionNFT
+git fetch
+git checkout start
 npm install
 ```
 

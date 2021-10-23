@@ -17,10 +17,12 @@ async function main() {
     await deployer.getAddress()
   );
 
+  // Deploy
   const EscuelaCryptoES = await ethers.getContractFactory("EscuelaCryptoES");
   const escuelaCryptoES = await EscuelaCryptoES.deploy();
   await escuelaCryptoES.deployed();
 
+  // Address
   console.log("Token ERC721 address:", escuelaCryptoES.address);
 
   // We also save the contract's artifacts and address in the frontend directory
