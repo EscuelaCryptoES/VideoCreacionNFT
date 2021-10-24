@@ -2,8 +2,8 @@ import React, {Component} from "react";
 
 import { ethers } from "ethers";
 
-import EscuelaCryptoESArtifact from "../contracts/EscuelaCryptoES.json";
-import EscuelaCryptoESContract from "../contracts/contract-address-escuelaCryptoES.json";
+import ArtMakerArtifact from "../contracts/ArtMaker.json";
+import ArtMakerContract from "../contracts/contract-address-artMaker.json";
 
 import { Gallery } from "./Gallery";
 import { Loading } from "./Loading";
@@ -62,33 +62,36 @@ export class Dapp extends Component {
     );
   }
 
-  
-
   async _intializeEthers() {
 
-    this._provider = new ethers.providers.Web3Provider(window.ethereum);
+    try{
+      this._provider = new ethers.providers.Web3Provider(window.ethereum);
 
-    this._escuelaCryptoES = new ethers.Contract(
-      EscuelaCryptoESContract.EscuelaCryptoES,
-      EscuelaCryptoESArtifact.abi,
-      this._provider
-    );
-    
-    // Retrieve NFT info
-    const artCount = await this._escuelaCryptoES.artRegistered();
+      this._artMaker = new ethers.Contract(
+        ArtMakerContract.ArtMaker,
+        ArtMakerArtifact.abi,
+        this._provider
+      );
 
-    for(let i = 0; i < artCount; i++){
-      const storedData = await this._escuelaCryptoES.tokenURI(i);
-      fetch(storedData)
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState(prevState => ({
-          art: [
-            ...this.state.art,
-            data
-          ]
-        }))
-      })
+      // Retrieve NFT info
+      const artCount = await this._artMaker.artRegistered();
+
+      for(let i = 0; i < artCount; i++){
+        const storedData = await this._artMaker.tokenURI(i);
+        fetch(storedData)
+        .then((res) => res.json())
+        .then((data) => {
+          this.setState(prevState => ({
+            art: [
+              ...this.state.art,
+              data
+            ]
+          }))
+        })
+      }
+    }
+    catch(e){
+      console.error(e);
     }
   }
 

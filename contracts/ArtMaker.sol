@@ -6,13 +6,13 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "hardhat/console.sol";
 
-contract EscuelaCryptoES is ERC721, Ownable {
+contract ArtMaker is ERC721, Ownable {
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
     uint8 public artRegistered = 6;
 
-    constructor() ERC721("EscuelaCryptoES", "ECE") {
+    constructor() ERC721("ArtMaker", "AMA") {
         for(uint i = 0; i < artRegistered; i++){
             safeMint(msg.sender);
         }

@@ -17,17 +17,17 @@ async function main() {
     await deployer.getAddress()
   );
 
-  const EscuelaCryptoES = await ethers.getContractFactory("EscuelaCryptoES");
-  const escuelaCryptoES = await EscuelaCryptoES.deploy();
-  await escuelaCryptoES.deployed();
+  const ArtMaker = await ethers.getContractFactory("ArtMaker");
+  const artMaker = await ArtMaker.deploy();
+  await artMaker.deployed();
 
-  console.log("Token ERC721 address:", escuelaCryptoES.address);
+  console.log("Token ERC721 address:", artMaker.address);
 
   // We also save the contract's artifacts and address in the frontend directory
-  saveFrontendFiles(escuelaCryptoES);
+  saveFrontendFiles(artMaker);
 }
 
-function saveFrontendFiles(escuelaCryptoES) {
+function saveFrontendFiles(artMaker) {
   const fs = require("fs");
   const contractsDir = __dirname + "/../frontend/src/contracts";
 
@@ -36,15 +36,15 @@ function saveFrontendFiles(escuelaCryptoES) {
   }
 
   fs.writeFileSync(
-    contractsDir + "/contract-address-escuelaCryptoES.json",
-    JSON.stringify({ EscuelaCryptoES: escuelaCryptoES.address }, undefined, 2)
+    contractsDir + "/contract-address-artMaker.json",
+    JSON.stringify({ ArtMaker: artMaker.address }, undefined, 2)
   );
 
-  const EscuelaCryptoESArtifact = artifacts.readArtifactSync("EscuelaCryptoES");
+  const ArtMakerArtifact = artifacts.readArtifactSync("ArtMaker");
 
   fs.writeFileSync(
-    contractsDir + "/EscuelaCryptoES.json",
-    JSON.stringify(EscuelaCryptoESArtifact, null, 2)
+    contractsDir + "/ArtMaker.json",
+    JSON.stringify(ArtMakerArtifact, null, 2)
   );
 }
 
